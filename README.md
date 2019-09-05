@@ -25,3 +25,5 @@ return this.props.todos.map( todo => (
 ```
 this.props.todo.title
 ```
+- Add styling to strikethrough completed tasks
+- Add checkbox and logic to 
