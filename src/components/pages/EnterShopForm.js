@@ -16,9 +16,16 @@ export class EnterShopForm extends Component {
       handleSubmit = event => {
         event.preventDefault()
         this.setState({ submitted: !this.state.submitted }) //currently toggling on button clickdont want this
-      }
+        }
+      
 
-      comp
+      // newInput = () => {
+      //   if (!this.state.submitted){
+      //     return <div> {event.target.value}</div>
+      //   } else {
+      //     return <div> {null} </div>
+      //   }
+      // }
 
     render() {
         return (
@@ -40,9 +47,9 @@ export class EnterShopForm extends Component {
             </form>
             <div>
                 <h3>Name</h3>
-                {!this.state.submitted ? //fix this logic, not appearing properly
+                {/* {!this.state.submitted ? //fix this logic, not appearing properly
                 <div> {this.state.value} </div> :
-                <div> {null} </div> }
+                <div> {null} </div> } */}
             </div>
           </div>
         )

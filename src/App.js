@@ -3,9 +3,10 @@ import 'node-fetch'
 // import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Todos from './components/Todos'
+import Home from './components/pages/Home'
+import Todos from './components/todo/Todos'
 import Header from './components/layout/Header'
-import AddTodo from './components/AddTodo'
+import AddTodo from './components/todo/AddTodo'
 import About from './components/pages/About';
 import EnterShopForm from './components/pages/EnterShopForm';
 
@@ -64,13 +65,14 @@ class App extends Component {
         <div className="App">
           <div className='container'>
             <Header />
-            <Route path='/' render={props => (
+            <Route path='/home' component={Home} />
+            <Route path='/todo' render={props => (
               <React.Fragment>
                 <AddTodo addTodo={this.addTodo}/>
                 <Todos 
                   todos={this.state.todos}
                   markComplete={this.markComplete}
-                  deleteTodo={this.deleteTodo}
+                  deleteTodo={this.deleteTodo} cv 
                   />
               </React.Fragment>
             )} />
