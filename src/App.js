@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'node-fetch'
+import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Todos from './components/Todos'
@@ -24,6 +25,7 @@ class App extends Component {
       .then(data => {
           this.setState({todos: data})
       })
+      .catch(error => ({error: error.message}))
   }
 
   markComplete = (id) => {
@@ -38,19 +40,21 @@ class App extends Component {
   }
 
   deleteTodo = (id) => {
-    this.setState({ 
-      todos: [...this.state.todos.filter(todo => 
-      todo.id !== id)]
-    })
+    fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    .then(res => res.json())
+    .then(data => this.setState({ 
+      todos: [...this.state.todos.filter(todo => todo.id !== id)] }))
+    .catch(error => ({error: error.message}))
   }
 
   addTodo = (title) => {
-    // const newTodo = {
-    //   id: uuid.v4(), 
-    //   title, 
-    //   completed: false
-    // }
-    this.setState({ todos: [...this.state.todos, newTodo] })
+    fetch('https://jsonplaceholder.typicode.com/todos/', {
+      title, 
+      completed: false
+    })
+    .then(res => res.json())
+    .then(data => this.setState({ todos: [...this.state.todos, data] }))
+    .catch(error => ({error: error.message}))
   }
 
 
@@ -76,6 +80,12 @@ class App extends Component {
       </Router>
     );
   }
+}
+
+App.propTypes = {
+  addtodo: PropTypes.func.isRequired,
+  markComplete: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 }
 
 export default App;
