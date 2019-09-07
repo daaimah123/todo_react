@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { cursor } from 'sisteransi';
-
 
 export class TodoItem extends Component {
 
@@ -24,7 +22,7 @@ export class TodoItem extends Component {
                         onChange={this.props.markComplete.bind(this, id)}
                         /> {' '}
                     { title }
-                    <button style={btnStyle}>X</button>
+                    <button onClick={this.props.deleteTodo.bind(this, id)} style={btnStyle}>X</button>
                 </p>
             </div>
         )
