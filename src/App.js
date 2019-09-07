@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import 'node-fetch'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Todos from './components/Todos'
 import Header from './components/layout/Header'
 import AddTodo from './components/AddTodo'
-// import uuid from 'uuid'
 import About from './components/pages/About';
+import EnterShopForm from './components/pages/EnterShopForm';
 
 import './App.css';
 
@@ -75,6 +75,7 @@ class App extends Component {
               </React.Fragment>
             )} />
             <Route path='/about' component={About}/>
+            <Route path='/enterform' component={EnterShopForm}/>
           </div>
         </div>
       </Router>
@@ -82,10 +83,10 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  addtodo: PropTypes.func.isRequired,
-  markComplete: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired
-}
+// App.propTypes = {
+//   addtodo: PropTypes.func.isRequired,
+//   markComplete: PropTypes.func.isRequired,
+//   deleteTodo: PropTypes.func.isRequired
+// }
 
 export default App;
